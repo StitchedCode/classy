@@ -1,0 +1,33 @@
+defaults: &defaults
+  # Should robots be allowed to crawl the site
+  ALLOW_ROBOTS: "false"
+  # Number of Puma threads (set it based on your memory footprint)
+  MAX_THREADS: "3"
+  # Timeout (in seconds) for Rack::Timeout
+  WEB_TIMEOUT: "25"
+  # Server Name for Sentry
+  SENTRY_SERVER_NAME: 'myapp.com'
+  # Manrdill Mailer username
+  MANDRILL_USERNAME: 'username'
+  # Mandrill Mailer API Key
+  MANDRILL_API_KEY: 'xxxxxxzzzzz'
+  # Port of application server (set by heroku)
+  # PORT: "3000"
+  # Number of Puma workers (set by heroku based on dyno size)
+  # WEB_CONCURRENCY: "2"
+  # Set this to the host name of your app in production and staging on heroku
+  DEFAULT_HOST: "localhost:3000"
+
+development:
+  <<: *defaults
+  ADMIN_EMAIL: "jan.jones@oozou.com"
+  ADMIN_PASSWORD: "passw0rd"
+  SOME_ITEM: "development"
+
+test:
+  <<: *defaults
+  SOME_ITEM: "test"
+
+production:
+  <<: *defaults
+  SOME_ITEM: "production"

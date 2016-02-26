@@ -1,0 +1,28 @@
+<% title t(".title") %>
+
+<h1><%= t(".heading") %></h1>
+
+<% if @projects.present? %>
+  <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th># text</th>
+          <th># classifications</th>
+          <th>Createad at</th>
+        </tr>
+      </thead>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project_path(project.id) %></td>
+        <td><%= project.project_type %></td>
+        <td><%= project.texts.count %></td>
+        <td><%= project.text_labels.count %></td>
+        <td><%= project.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <%= t('.no_projects') %>
+<% end %>
