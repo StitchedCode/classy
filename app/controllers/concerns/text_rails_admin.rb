@@ -8,7 +8,7 @@ module TextRailsAdmin
         field :labelled?
         field :response_count
       end
-      
+
       show do
         field :project
         field :body
