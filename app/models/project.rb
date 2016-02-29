@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include ProjectRailsAdmin
+
   enum project_type: [:binary, :multiclass]
 
   has_many :project_labels
@@ -11,10 +13,6 @@ class Project < ActiveRecord::Base
   scope :public_projects, -> { where(public: true) }
 
   def self.users
-    if public?
-      User.user.all
-    else
-      ProjectUser.all
-    end
+    public? ? User.user.all : ProjectUser.all
   end
 end

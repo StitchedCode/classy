@@ -5,6 +5,7 @@ module TextRailsAdmin
     rails_admin do
       list do
         field :project
+        field :name
         field :labelled?
         field :response_count
       end

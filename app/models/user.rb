@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
+  include UserRailsAdmin
+
   enum role: [:user, :admin]
 
   # Include default devise modules. Others available are:
@@ -19,10 +21,6 @@ class User < ActiveRecord::Base
   has_many :projects, through: :project_users
   has_many :text_labels
   has_many :text, through: :text_labels
-
-  rails_admin do
-    object_label_method :email
-  end
 
   def visible_projects
     admin? ? Project.all : projects + Project.public_projects
