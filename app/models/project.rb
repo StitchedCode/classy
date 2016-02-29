@@ -1,8 +1,6 @@
 class Project < ActiveRecord::Base
   include ProjectRailsAdmin
 
-  enum project_type: [:binary, :multiclass]
-
   has_many :project_labels
   has_many :text_labels, through: :project_labels
   has_many :project_users

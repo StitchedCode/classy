@@ -7,7 +7,6 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Type</th>
           <th># text</th>
           <th># classifications</th>
           <th>Createad at</th>
@@ -16,7 +15,6 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.name, project_path(project.id) %></td>
-        <td><%= project.project_type %></td>
         <td><%= project.texts.count %></td>
         <td><%= project.text_labels.count %></td>
         <td><%= project.created_at %></td>
