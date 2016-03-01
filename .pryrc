@@ -1,7 +1,5 @@
 AwesomePrint.pry!
 
-Hirb.enable
-
 # Byebug aliases like in versions < 3.0
 if defined?(PryByebug)
   Pry.commands.alias_command 'c', 'continue'

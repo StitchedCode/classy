@@ -11,7 +11,7 @@ class PagesController < HighVoltage::PagesController
 
   def robots
     robot_type = ENV["ALLOW_ROBOTS"] == "true" ? "allowed" : "disallowed"
-    robots = File.read(Rails.root + "config/robots/robots.#{robot_type}.txt")
+    robots = File.read("#{Rails.root}/config/robots/robots.#{robot_type}.txt")
     render text: robots, layout: false, content_type: "text/plain"
   end
 
@@ -19,8 +19,5 @@ class PagesController < HighVoltage::PagesController
   end
 
   def about
-  end
-
-  def privacy
   end
 end

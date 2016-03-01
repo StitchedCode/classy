@@ -11,6 +11,12 @@ class Text < ActiveRecord::Base
 
   validates :body, presence: true
 
+  scope :for, ->(user) { where(project_id: user.projects) }
+
+  scope :public_texts, -> do
+    references(:project).includes(:project).where(projects: { public: true })
+  end
+
   # Only returns projects that have been labelled already
   scope :labelled, -> { joins(:text_labels) }
 
