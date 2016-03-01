@@ -2,6 +2,14 @@
 
 <h1><%= @text.project.name %> — Classify</h1>
 
+<% if @text.context.present? %>
+  <h3>Context</h3>
+    <blockquote>
+      <p><%= @text.context %></p>
+    </blockquote>
+<% end %>
+
+<h3>Text</h3>
 <blockquote>
   <p><%= @text.body %></p>
 </blockquote>
