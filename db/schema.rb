@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301040027) do
+ActiveRecord::Schema.define(version: 20160301052734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,22 +25,22 @@ ActiveRecord::Schema.define(version: 20160301040027) do
 
   add_index "project_labels", ["name"], name: "index_project_labels_on_name", using: :btree
 
-  create_table "project_users", force: :cascade do |t|
-    t.integer  "project_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id", using: :btree
-  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id", using: :btree
-
   create_table "projects", force: :cascade do |t|
     t.string   "name",                       null: false
     t.boolean  "public",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "projects_users", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
+  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
 
   create_table "text_labels", force: :cascade do |t|
     t.integer  "text_id"
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20160301040027) do
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
-  add_foreign_key "project_users", "projects"
-  add_foreign_key "project_users", "users"
+  add_foreign_key "projects_users", "projects"
+  add_foreign_key "projects_users", "users"
   add_foreign_key "text_labels", "project_labels"
   add_foreign_key "text_labels", "texts"
 end
