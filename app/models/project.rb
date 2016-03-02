@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  after_create :create_default_labels
+
   include ProjectRailsAdmin
 
   has_and_belongs_to_many :users
@@ -13,5 +15,12 @@ class Project < ActiveRecord::Base
 
   def users
     public? ? User.user : super
+  end
+
+  private
+
+  def create_default_labels
+    project_labels.create(name: "I don't know")
+    project_labels.create(name: 'None of the above')
   end
 end
