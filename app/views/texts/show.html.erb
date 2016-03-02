@@ -14,7 +14,7 @@
   <p><%= @text.body %></p>
 </blockquote>
 
-<%= simple_form_for(@text) do |f| %>
+<%= simple_form_for(@text, url: project_text_path(@project, @text)) do |f| %>
   <%= f.input :classification, collection: @text.project_labels, classification: false, label_method: :name, value_method: :id, include_blank: false %>
   <%= f.button :submit, 'Classify' %>
 <% end %>

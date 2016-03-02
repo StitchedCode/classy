@@ -1,58 +1,42 @@
-# frozen_string_literal: true
-class ApplicationPolicy
-  attr_reader :user, :record
-
-  def initialize(user, record)
-    @user = user
-    @record = record
+# rails_admin always falls back to ApplicationPolicy, so we are using BasePolicy as superclass for our policy classes.
+class ApplicationPolicy < BasePolicy
+  def dashboard?
+    admin?
   end
 
   def index?
-    false
-  end
-
-  def show?
-    scope.where(id: record.id).exists?
-  end
-
-  def create?
-    false
+    admin?
   end
 
   def new?
-    create?
+    admin?
   end
 
-  def update?
-    false
+  def export?
+    admin?
+  end
+
+  def bulk_delete?
+    admin?
+  end
+
+  def show?
+    admin?
   end
 
   def edit?
-    update?
+    admin?
   end
 
-  def destroy?
-    false
+  def delete?
+    admin?
   end
 
-  def scope
-    Pundit.policy_scope!(user, record.class)
+  def show_in_app?
+    admin?
   end
 
-  def admin?
-    user&.admin?
-  end
-
-  class Scope
-    attr_reader :user, :scope
-
-    def initialize(user, scope)
-      @user = user
-      @scope = scope
-    end
-
-    def resolve
-      scope
-    end
+  def history?
+    admin?
   end
 end

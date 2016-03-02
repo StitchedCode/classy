@@ -1,6 +1,6 @@
 <% title t(".title") %>
 
-<h1><%= @project.name %></h1>
+<h1><%= @project.name %> — Texts</h1>
 
 
 <table class="table table-striped">
@@ -13,7 +13,7 @@
   </thead>
   <% @project.texts.each do |text| %>
     <tr>
-      <td><%= link_to text.body.truncate_words(7), text_path(text.id) %></td>
+      <td><%= link_to text.body.truncate_words(7), project_text_path(@project.id, text.id) %></td>
       <td><%= text.text_labels.count %></td>
       <td><%= text.labelled_by?(current_user) ? '✓' : '✘' %></td>
     </tr>
