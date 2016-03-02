@@ -19,20 +19,12 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Authorization
 gem 'pundit'
 
 # Use Puma as the app server
 gem 'puma'
-
 
 gem 'devise'
 gem 'devise_invitable'
@@ -42,9 +34,6 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'figaro'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 # Static pages
 gem 'high_voltage'
@@ -57,8 +46,8 @@ gem 'paper_trail'
 group :production do
   gem 'rack-timeout'
   gem 'rails_12factor'
-  gem 'sentry-raven'
-  gem 'newrelic_rpm'
+  # gem 'sentry-raven'
+  # gem 'newrelic_rpm'
 end
 
 group :development, :test do
@@ -107,8 +96,6 @@ group :development do
   # Profiling
   gem 'stackprof'
   gem 'derailed_benchmarks'
-
-  gem 'mailcatcher'
 end
 
 group :test do
