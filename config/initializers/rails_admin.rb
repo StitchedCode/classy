@@ -22,13 +22,21 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
-    export
+    new do
+      except ['TextLabel']
+    end
+    export do
+      only ['Text']
+    end
     bulk_delete
     show
-    edit
+    edit do
+      except ['TextLabel']
+    end
     delete
-    show_in_app
+    show_in_app do
+      only ['Project']
+    end
 
     ## With an audit adapter, you can add:
     history_index

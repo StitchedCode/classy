@@ -1,4 +1,6 @@
 class ProjectLabel < ActiveRecord::Base
+  include ProjectLabelRailsAdmin
+
   belongs_to :project
 
   has_many :text_labels

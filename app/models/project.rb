@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
   include ProjectRailsAdmin
 
+  has_and_belongs_to_many :users
+
   has_many :project_labels
   has_many :text_labels, through: :project_labels
   has_many :texts
@@ -10,6 +12,6 @@ class Project < ActiveRecord::Base
   scope :public_projects, -> { where(public: true) }
 
   def users
-    public? ? User.user : ProjectUser.all
+    public? ? User.user : super
   end
 end
