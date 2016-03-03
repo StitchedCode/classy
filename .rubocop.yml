@@ -176,7 +176,7 @@ RequireParentheses:
   Enabled: false
 
 StringLiterals:
-  Enabled: false
+  Enabled: true
 
 # We are using this for Pundit Policies
 StructInheritance:

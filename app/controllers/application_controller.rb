@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ActiveRecord::RecordNotFound, with: :no_record
 
   after_action :verify_authorized, except: :index, unless: :whitelisted_controller?
 
@@ -23,7 +24,12 @@ class ApplicationController < ActionController::Base
     # we are not using root_path cause of rails_admin namespacing
     redirect_to(request.referrer || '/')
   end
-  
+
+  def no_record
+    flash[:alert] = 'No such record'
+    redirect_to(request.referrer || '/')
+  end
+
   def whitelisted_controller?
     devise_controller? || rails_admin_controller?
   end

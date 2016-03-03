@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class TextsController < ApplicationController
   before_action :find_text_and_project
 

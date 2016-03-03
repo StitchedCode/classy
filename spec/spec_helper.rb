@@ -1,7 +1,10 @@
 # frozen_string_literal: true
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 if ENV['CIRCLE_ARTIFACTS']
   require 'simplecov'
-  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], 'coverage')
   SimpleCov.coverage_dir(dir)
   SimpleCov.start
 end

@@ -1,4 +1,5 @@
-# rails_admin always falls back to ApplicationPolicy, so we are using BasePolicy as superclass for our policy classes.
+# frozen_string_literal: true
+# rails_admin always use ApplicationPolicy, so we are using BasePolicy as base class
 class ApplicationPolicy < BasePolicy
   def dashboard?
     admin?

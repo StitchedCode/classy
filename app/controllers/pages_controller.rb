@@ -10,9 +10,9 @@ class PagesController < HighVoltage::PagesController
   layout false
 
   def robots
-    robot_type = ENV["ALLOW_ROBOTS"] == "true" ? "allowed" : "disallowed"
+    robot_type = ENV['ALLOW_ROBOTS'] == 'true' ? 'allowed' : 'disallowed'
     robots = File.read("#{Rails.root}/config/robots/robots.#{robot_type}.txt")
-    render text: robots, layout: false, content_type: "text/plain"
+    render text: robots, layout: false, content_type: 'text/plain'
   end
 
   def landing

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Project < ActiveRecord::Base
   after_create :create_default_labels
 
