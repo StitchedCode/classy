@@ -46,8 +46,8 @@ gem 'paper_trail'
 group :production do
   gem 'rack-timeout'
   gem 'rails_12factor'
-  # gem 'sentry-raven'
-  # gem 'newrelic_rpm'
+  gem 'sentry-raven'
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
