@@ -1,16 +1,15 @@
 # frozen_string_literal: true
 class Project < ActiveRecord::Base
-  after_create :create_default_labels
-
   include ProjectRailsAdmin
 
   has_and_belongs_to_many :users
-
   has_many :project_labels
   has_many :text_labels, through: :project_labels
   has_many :texts
 
   validates :name, presence: true
+
+  after_create :create_default_labels
 
   scope :public_projects, -> { where(public: true) }
 
