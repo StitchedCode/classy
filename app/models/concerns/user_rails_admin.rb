@@ -4,6 +4,10 @@ module UserRailsAdmin
 
   included do
     rails_admin do
+      object_label_method do
+        :email
+      end
+
       list do
         field :email
         field :role

@@ -4,13 +4,12 @@ class TextsController < ApplicationController
 
   # Currently not exposed through any route, we use RandomTextsController#index instead
   def show
-    authorize @text
   end
 
   def update
-    authorize @text
     text_label = TextLabel.find_or_create_by(text_id: @text.id, user_id: current_user.id)
-    text_label.update(project_label_id: update_params[:classification])
+    project_label = ProjectLabel.find_by(name: update_params[:classification])
+    text_label.update(project_label_id: project_label.id)
     redirect_to project_path(@project.id)
   end
 
@@ -19,6 +18,7 @@ class TextsController < ApplicationController
   def find_text_and_project
     @project = Project.find(params[:project_id])
     @text = @project.texts.find(params[:id])
+    authorize @text
   end
 
   def update_params

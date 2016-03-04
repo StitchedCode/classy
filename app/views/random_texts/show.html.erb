@@ -1,6 +1,7 @@
 <% title t(".title") %>
 
-<h1><%= @text.project.name %> — Classify</h1>
+<% if @text %>
+<h1><%= @text.project.name %></h1>
 
 <% if @text.context.present? %>
   <h3>Context</h3>
@@ -15,6 +16,11 @@
 </blockquote>
 
 <%= simple_form_for(@text, url: project_text_path(@project, @text)) do |f| %>
-  <%= f.input :classification, collection: @text.project_labels, classification: false, label_method: :name, value_method: :id, include_blank: false %>
+  <%= f.input :classification, collection: @text.project_labels, classification: false, label_method: :name, value_method: :name, include_blank: false %>
   <%= f.button :submit, 'Classify' %>
+<% end %>
+<% else %>
+    <p>
+      <%= t('.all_classified') %>
+    </p>
 <% end %>
