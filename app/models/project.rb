@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
   private
 
   def create_default_labels
-    project_labels.create(name: "I don't know")
-    project_labels.create(name: 'None of the above')
+    project_labels.create(name: 'Skipped')
+    project_labels.create(name: 'None')
   end
 end

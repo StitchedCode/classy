@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   authenticated :user do
     root to: 'projects#index'
     resources :projects, only: [:index, :show] do
-      resources :texts, only: [:show, :update]
+      get '/texts/random' => 'random_texts#show'
+      resources :texts, only: [:update]
     end
     get '/about' => 'pages#about'
   end

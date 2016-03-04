@@ -7,5 +7,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:texts).find(params[:id])
     authorize @project
+    redirect_to project_texts_random_path(@project.id)
   end
 end

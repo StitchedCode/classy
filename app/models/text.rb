@@ -14,11 +14,16 @@ class Text < ActiveRecord::Base
 
   scope :for, ->(user) { where(project_id: user.projects) }
 
+  # XXX: If this proves too slow, let's do it with a SQL query
+  def self.random_unlabelled_for(user)
+    all.reject { |text| text.labelled_by?(user) }.sample
+  end
+
   scope :public_texts, -> do
     references(:project).includes(:project).where(projects: { public: true })
   end
 
-  # Only returns projects that have been labelled already
+  # Only returns texts that have been labelled already
   scope :labelled, -> { joins(:text_labels) }
 
   def labelled?

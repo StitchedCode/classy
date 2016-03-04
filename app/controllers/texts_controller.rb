@@ -2,6 +2,7 @@
 class TextsController < ApplicationController
   before_action :find_text_and_project
 
+  # Currently not exposed through any route, we use RandomTextsController#index instead
   def show
     authorize @text
   end
@@ -17,7 +18,7 @@ class TextsController < ApplicationController
 
   def find_text_and_project
     @project = Project.find(params[:project_id])
-    @text = @project.texts.includes(:text_labels).find(params[:id])
+    @text = @project.texts.find(params[:id])
   end
 
   def update_params
