@@ -6,11 +6,7 @@ defaults: &defaults
   # Timeout (in seconds) for Rack::Timeout
   WEB_TIMEOUT: "25"
   # Server Name for Sentry
-  SENTRY_SERVER_NAME: 'myapp.com'
-  # Manrdill Mailer username
-  MANDRILL_USERNAME: 'username'
-  # Mandrill Mailer API Key
-  MANDRILL_API_KEY: 'xxxxxxzzzzz'
+  # SENTRY_SERVER_NAME: 'myapp.com'
   # Port of application server (set by heroku)
   # PORT: "3000"
   # Number of Puma workers (set by heroku based on dyno size)
@@ -20,8 +16,6 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  ADMIN_EMAIL: "jan.jones@oozou.com"
-  ADMIN_PASSWORD: "passw0rd"
   SOME_ITEM: "development"
 
 test:

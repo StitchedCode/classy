@@ -59,3 +59,4 @@ en:
     show:
       title: "Label"
       all_classified: "You classified all texts in the current project, well done!"
+      select_placeholder: "<please select>"

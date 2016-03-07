@@ -12,21 +12,18 @@ dependencies:
 
 checkout:
   post:
-   - cp config/application.yml.example config/application.yml
+    - cp config/application.yml.example config/application.yml
 
-test:
-  post:
-
-# deployment:
-#   staging:
-#     branch: develop
-#     commands:
-#       - '[[ ! -s "$(git rev-parse --git-dir)/shallow" ]] || git fetch --unshallow'
-#       - git push git@heroku.com:HEROKU_APP_NAME_STAGING.git HEAD:master:
-#           timeout: 300
-#       - heroku run rake db:migrate --app HEROKU_APP_NAME_STAGING:
-#           timeout: 300
-#       - heroku restart --app HEROKU_APP_NAME_STAGING
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - '[[ ! -s "$(git rev-parse --git-dir)/shallow" ]] || git fetch --unshallow'
+      - git push git@heroku.com:stitched-classy-staging.git HEAD:master:
+          timeout: 300
+      - heroku run rake db:migrate --app stitched-classy-staging:
+          timeout: 300
+      - heroku restart --app stitched-classy-staging
 #   production:
 #     branch: master
 #     commands:
