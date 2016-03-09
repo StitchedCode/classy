@@ -15,7 +15,7 @@
       <p><%= @text.body %></p>
     </blockquote>
 
-    <%= simple_form_for(@text, url: project_text_path(@project, @text), html: { id: 'label_form'}) do |f| %>
+    <%= simple_form_for(@text, url: project_text_path(@project, @text)) do |f| %>
       <%= f.input :classification,
                   collection: @text.project_labels,
                   classification: false,
@@ -23,6 +23,7 @@
                   value_method: :name,
                   include_blank: false,
                   prompt: t('.select_placeholder'),
+                  as: @text.project.option_buttons? ? :radio_buttons : :select,
                   input_html: { onchange: "this.form.submit();", autofocus: true }
       %>
     <% end %>
