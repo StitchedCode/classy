@@ -1,0 +1,9 @@
+<% title t(".title") %>
+
+<h1><%= t('.title') %></h1>
+
+<%= simple_form_for :upload, url: admin_upload_path, method: :post do |f| %>
+  <%= f.input :project_name, as: :string %>
+  <%= f.input :file, as: :file %>
+  <%= f.submit t('.upload') %>
+<% end %>

@@ -17,6 +17,7 @@
           <ul class="dropdown-menu" role="menu">
             <% if current_user.admin? %>
               <li><%= link_to t(".admin"), '/admin' %></li>
+              <li><%= link_to t(".upload"), admin_upload_path %></li>
               <li class="divider"></li>
             <% end %>
             <li><%= link_to t(".edit_profile"), edit_registration_path(current_user) %></li>

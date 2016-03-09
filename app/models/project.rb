@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   has_many :text_labels, through: :project_labels
   has_many :texts
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   after_create :create_default_labels
 

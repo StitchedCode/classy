@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Project, type: :model do
-  let(:project) { create(:project) }
   let(:public_project) { create(:public_project) }
+
+  subject { create(:project) }
 
   describe 'callbacks' do
     it 'creates default labels after project creation' do
@@ -16,9 +17,10 @@ RSpec.describe Project, type: :model do
     it { is_expected.to have_many(:text_labels) }
     it { is_expected.to have_many(:texts) }
     it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name) }
 
     describe '#users' do
-      let(:user1) { create(:user, projects: [project]) }
+      let(:user1) { create(:user, projects: [subject]) }
       let(:user2) { create(:user) }
 
       it 'returns all users if the project is public' do
@@ -26,7 +28,7 @@ RSpec.describe Project, type: :model do
       end
 
       it "returns only the project's users if the project is private" do
-        expect(project.users).to match_array([user1])
+        expect(subject.users).to match_array([user1])
       end
     end
   end

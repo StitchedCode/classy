@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   authenticated :user do
@@ -19,4 +17,10 @@ Rails.application.routes.draw do
       get '/about' => 'pages#about'
     end
   end
+
+  namespace :admin do
+    get '/upload' => 'upload#new'
+    post '/upload' => 'upload#create'
+  end
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

@@ -23,6 +23,7 @@ en:
   shared:
     header:
       admin: "Admin"
+      upload: "Upload"
       edit_profile: "Edit Profile"
       sign_out: "Sign Out"
   layouts:
@@ -60,3 +61,10 @@ en:
       title: "Label"
       all_classified: "You classified all texts in the current project, well done!"
       select_placeholder: "<please select>"
+  admin:
+    upload:
+      new:
+        title: "Upload"
+        upload: "Upload file"
+      create:
+        unique_project_names: "Please make sure each project has a unique name!"
