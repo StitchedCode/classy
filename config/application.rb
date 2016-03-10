@@ -42,5 +42,6 @@ module Classy
     config.to_prepare do
         Devise::RegistrationsController.layout proc{ |controller| action_name == 'edit' ? 'application' : 'devise' }
     end
+    config.active_job.queue_adapter = :resque
   end
 end

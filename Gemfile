@@ -43,6 +43,13 @@ gem 'actionpack-page_caching'
 gem 'rails_admin'
 gem 'paper_trail'
 
+# Resque
+gem 'resque', require: 'resque/server'
+gem 'resque-retry', require: 'resque-retry/server'
+gem 'resque-sentry'
+gem 'resque-scheduler'
+gem 'resque-pool'
+
 group :production do
   gem 'rack-timeout'
   gem 'rails_12factor'
