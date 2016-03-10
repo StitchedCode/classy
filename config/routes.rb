@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   authenticated :user do
+    mount Resque::Server.new, at: '/resque'
     root to: 'projects#index'
     resources :projects, only: [:index, :show] do
       get '/texts/random' => 'random_texts#show'
