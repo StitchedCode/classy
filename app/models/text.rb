@@ -35,7 +35,7 @@ class Text < ActiveRecord::Base
   end
 
   def label_counts
-    project_labels.includes(:text_labels).map { |label| [label.name, label.text_labels.size] }.to_h
+    text_labels.group_by(&:name).map { |name, labels| [name, labels.size] }.to_h
   end
 
   def label
