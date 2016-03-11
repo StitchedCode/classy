@@ -16,10 +16,25 @@ module Admin
       redirect_to admin_upload_path, alert: t('.unique_project_names')
     end
 
+    def edit
+    end
+
+    def update
+      project = Project.find(update_params[:project_id])
+      upload = Upload.create(project_name: project.name, body: File.read(upload_params[:file].tempfile))
+
+      ::ProcessUploadJob.perform_later(upload.id)
+      redirect_to rails_admin_path(project)
+    end
+
     protected
 
     def upload_params
       params.require(:upload).permit(:project_name, :file)
+    end
+
+    def update_params
+      params.require(:upload).permit(:project_id, :file)
     end
   end
 end

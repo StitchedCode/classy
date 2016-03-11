@@ -68,3 +68,7 @@ en:
         upload: "Upload file"
       create:
         unique_project_names: "Please make sure each project has a unique name!"
+      edit:
+        title: "Add texts"
+        upload: "Add texts to project"
+        select_project: "Select project"

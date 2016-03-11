@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/upload' => 'upload#new'
     post '/upload' => 'upload#create'
+    get '/add_texts' => 'upload#edit'
+    patch '/add_texts' => 'upload#update'
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 end

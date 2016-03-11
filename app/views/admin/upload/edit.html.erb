@@ -1,0 +1,9 @@
+<% title t('.title') %>
+
+<h1><%= t('.title') %></h1>
+
+<%= simple_form_for :upload, url: admin_add_texts, method: :patch do |f| %>
+    <%= f.input :project_id, collection: Project.all, value_method: :id, prompt: t('.select_project'), as: :select %>
+    <%= f.input :file, as: :file %>
+    <%= f.submit t('.upload') %>
+<% end %>
