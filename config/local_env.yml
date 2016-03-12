@@ -1,0 +1,10 @@
+
+# ---- REDIS
+# local
+REDIS_URL: redis://127.0.0.1:6379
+
+# ---- DB
+RAILS_DB_HOST: 'localhost'
+RAILS_DB_USER: 'MrMattWright'
+RAILS_DB_PASS: ''
+RAILS_DB_NAME: 'classy'
