@@ -4,6 +4,14 @@ module ProjectRailsAdmin
 
   included do
     rails_admin do
+      show do
+        configure :texts do
+          pretty_value do
+            value.count
+          end
+        end
+      end
+
       edit do
         configure :project_labels do
           associated_collection_scope do
